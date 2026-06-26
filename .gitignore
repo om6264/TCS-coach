@@ -1,0 +1,10 @@
+# Ignore study materials to keep the repository lightweight
+*.pdf
+*.docx
+TCS/
+TCS ninja/
+Tcs premium materials/
+
+# OS generated files
+.DS_Store
+Thumbs.db

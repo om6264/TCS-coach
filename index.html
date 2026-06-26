@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCS NQT Coach — 10-Day Mastery System</title>
+    <meta name="description" content="AI-powered TCS NQT preparation coach with 500+ questions, mock tests, study planner, and progress tracking. Master Aptitude, Reasoning, Verbal & Coding in 10 days.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient-orb orb-1"></div>
+        <div class="bg-gradient-orb orb-2"></div>
+        <div class="bg-gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <div class="brand-icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="url(#grad1)" stroke-width="2" fill="none"/>
+                    <path d="M14 10L20 13V19L14 22L8 19V13L14 10Z" fill="url(#grad1)"/>
+                    <defs><linearGradient id="grad1" x1="0" y1="0" x2="28" y2="28"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+                </svg>
+            </div>
+            <span class="brand-text">TCS NQT <span class="brand-accent">Coach</span></span>
+        </div>
+        <div class="nav-links" id="navLinks">
+            <a href="#" class="nav-link active" data-page="dashboard" onclick="showPage('dashboard')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                Dashboard
+            </a>
+            <a href="#" class="nav-link" data-page="practice" onclick="showPage('practice')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                Practice
+            </a>
+            <a href="#" class="nav-link" data-page="mocktest" onclick="showPage('mocktest')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Mock Test
+            </a>
+            <a href="#" class="nav-link" data-page="planner" onclick="showPage('planner')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                10-Day Plan
+            </a>
+            <a href="#" class="nav-link" data-page="notebook" onclick="showPage('notebook')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Error Book
+            </a>
+            <a href="#" class="nav-link" data-page="formulas" onclick="showPage('formulas')">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                Formulas
+            </a>
+        </div>
+        <div class="nav-actions">
+            <div class="streak-badge" id="streakBadge" title="Current streak">
+                🔥 <span id="streakCount">0</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" onclick="toggleMobileMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        
+        <!-- ========== DASHBOARD PAGE ========== -->
+        <div class="page active" id="page-dashboard">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-badge">🎯 10-Day Challenge Active</div>
+                    <h1 class="hero-title">Master TCS NQT<br><span class="gradient-text">In 10 Days</span></h1>
+                    <p class="hero-subtitle">AI-powered preparation with 500+ curated questions, smart practice, mock tests, and real-time progress tracking. Your path to TCS Ninja, Digital & Prime starts here.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-lg" onclick="showPage('practice')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                            Start Practice
+                        </button>
+                        <button class="btn btn-glass btn-lg" onclick="showPage('mocktest')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Take Mock Test
+                        </button>
+                    </div>
+                </div>
+                <div class="hero-stats">
+                    <div class="countdown-card">
+                        <div class="countdown-ring">
+                            <svg viewBox="0 0 120 120">
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
+                                <circle cx="60" cy="60" r="54" fill="none" stroke="url(#countdownGrad)" stroke-width="8" 
+                                    stroke-dasharray="339.292" stroke-dashoffset="0" stroke-linecap="round"
+                                    id="countdownCircle" transform="rotate(-90 60 60)"/>
+                                <defs><linearGradient id="countdownGrad"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#ec4899"/></linearGradient></defs>
+                            </svg>
+                            <div class="countdown-inner">
+                                <span class="countdown-number" id="daysLeft">10</span>
+                                <span class="countdown-label">Days Left</span>
+                            </div>
+                        </div>
+                        <div class="exam-date" id="examDate">Exam: Loading...</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Stats -->
+            <section class="stats-grid">
+                <div class="stat-card stat-card-purple">
+                    <div class="stat-icon">📝</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="totalAttempted">0</span>
+                        <span class="stat-label">Questions Solved</span>
+                    </div>
+                    <div class="stat-trend up">↑ Keep going!</div>
+                </div>
+                <div class="stat-card stat-card-green">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="accuracy">0%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat-trend" id="accuracyTrend">Target: 85%+</div>
+                </div>
+                <div class="stat-card stat-card-blue">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="mockScore">—</span>
+                        <span class="stat-label">Best Mock Score</span>
+                    </div>
+                    <div class="stat-trend">Out of 100</div>
+                </div>
+                <div class="stat-card stat-card-orange">
+                    <div class="stat-icon">⏱️</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="studyTime">0h</span>
+                        <span class="stat-label">Study Time</span>
+                    </div>
+                    <div class="stat-trend">Today</div>
+                </div>
+            </section>
+
+            <!-- Topic Mastery -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📊 Topic Mastery</h2>
+                    <p class="section-subtitle">Track your strengths and weaknesses across all sections</p>
+                </div>
+                <div class="mastery-grid" id="masteryGrid">
+                    <!-- Filled dynamically -->
+                </div>
+            </section>
+
+            <!-- Daily Target -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">🎯 Today's Targets</h2>
+                    <p class="section-subtitle" id="todayDate">Loading...</p>
+                </div>
+                <div class="daily-targets" id="dailyTargets">
+                    <!-- Filled dynamically -->
+                </div>
+            </section>
+
+            <!-- AI Tip of the Day -->
+            <section class="section">
+                <div class="ai-tip-card" id="aiTipCard">
+                    <div class="ai-tip-header">
+                        <div class="ai-avatar">🤖</div>
+                        <div>
+                            <h3>AI Coach Tip</h3>
+                            <span class="ai-tip-time">Updated just now</span>
+                        </div>
+                    </div>
+                    <p class="ai-tip-text" id="aiTipText">Loading your personalized tip...</p>
+                    <button class="btn btn-sm btn-glass" onclick="getNewTip()">Get New Tip ✨</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========== PRACTICE PAGE ========== -->
+        <div class="page" id="page-practice">
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">🎯 Topic-Wise Practice</h2>
+                    <p class="section-subtitle">Select a topic and difficulty to start practicing</p>
+                </div>
+
+                <!-- Category Tabs -->
+                <div class="category-tabs" id="categoryTabs">
+                    <button class="cat-tab active" data-category="numerical" onclick="selectCategory('numerical')">
+                        <span class="cat-icon">🔢</span> Numerical Ability
+                    </button>
+                    <button class="cat-tab" data-category="reasoning" onclick="selectCategory('reasoning')">
+                        <span class="cat-icon">🧩</span> Reasoning
+                    </button>
+                    <button class="cat-tab" data-category="verbal" onclick="selectCategory('verbal')">
+                        <span class="cat-icon">📖</span> Verbal Ability
+                    </button>
+                    <button class="cat-tab" data-category="coding" onclick="selectCategory('coding')">
+                        <span class="cat-icon">💻</span> Coding
+                    </button>
+                </div>
+
+                <!-- Topic Cards -->
+                <div class="topic-grid" id="topicGrid">
+                    <!-- Filled dynamically -->
+                </div>
+            </section>
+
+            <!-- Quiz Area (hidden initially) -->
+            <section class="quiz-area" id="quizArea" style="display:none;">
+                <div class="quiz-header">
+                    <div class="quiz-info">
+                        <span class="quiz-topic" id="quizTopic">Topic</span>
+                        <span class="quiz-progress" id="quizProgress">1 / 10</span>
+                    </div>
+                    <div class="quiz-timer" id="quizTimer">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span id="timerDisplay">00:00</span>
+                    </div>
+                    <button class="btn btn-sm btn-ghost" onclick="exitQuiz()">✕ Exit</button>
+                </div>
+                <div class="quiz-progress-bar">
+                    <div class="quiz-progress-fill" id="quizProgressBar" style="width: 0%"></div>
+                </div>
+                <div class="quiz-body">
+                    <div class="question-card" id="questionCard">
+                        <div class="question-number" id="questionNumber">Q1</div>
+                        <div class="question-text" id="questionText">Loading question...</div>
+                        <div class="options-list" id="optionsList">
+                            <!-- Options filled dynamically -->
+                        </div>
+                        <div class="question-explanation" id="questionExplanation" style="display:none;">
+                            <div class="explanation-header">
+                                <span class="explanation-icon">💡</span>
+                                <span>Explanation</span>
+                            </div>
+                            <p id="explanationText"></p>
+                        </div>
+                    </div>
+                    <div class="quiz-actions">
+                        <button class="btn btn-glass" id="prevBtn" onclick="prevQuestion()" disabled>← Previous</button>
+                        <button class="btn btn-primary" id="checkBtn" onclick="checkAnswer()">Check Answer</button>
+                        <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display:none;">Next →</button>
+                        <button class="btn btn-primary" id="finishBtn" onclick="finishQuiz()" style="display:none;">Finish Quiz 🎉</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Result -->
+            <section class="quiz-result" id="quizResult" style="display:none;">
+                <div class="result-card">
+                    <div class="result-emoji" id="resultEmoji">🎉</div>
+                    <h2 class="result-title" id="resultTitle">Great Job!</h2>
+                    <div class="result-score">
+                        <span class="result-score-value" id="resultScore">8/10</span>
+                        <span class="result-score-label">Score</span>
+                    </div>
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <span class="result-stat-value correct" id="resultCorrect">8</span>
+                            <span class="result-stat-label">Correct</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-stat-value wrong" id="resultWrong">2</span>
+                            <span class="result-stat-label">Wrong</span>
+                        </div>
+                        <div class="result-stat">
+                            <span class="result-stat-value time" id="resultTime">5:30</span>
+                            <span class="result-stat-label">Time Taken</span>
+                        </div>
+                    </div>
+                    <div class="result-actions">
+                        <button class="btn btn-primary" onclick="reviewQuiz()">📋 Review Answers</button>
+                        <button class="btn btn-glass" onclick="retryQuiz()">🔄 Try Again</button>
+                        <button class="btn btn-glass" onclick="exitQuiz()">📚 Back to Topics</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========== MOCK TEST PAGE ========== -->
+        <div class="page" id="page-mocktest">
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">⏱️ Full-Length Mock Tests</h2>
+                    <p class="section-subtitle">Simulate the real TCS NQT exam experience</p>
+                </div>
+
+                <div class="mock-test-cards" id="mockTestCards">
+                    <div class="mock-card">
+                        <div class="mock-card-badge foundation">Foundation</div>
+                        <h3>Part A: Foundation Test</h3>
+                        <p>Numerical, Verbal & Reasoning — 65 questions in 75 minutes</p>
+                        <div class="mock-details">
+                            <span>🔢 25 Numerical</span>
+                            <span>📖 20 Verbal</span>
+                            <span>🧩 20 Reasoning</span>
+                        </div>
+                        <div class="mock-meta">
+                            <span>⏱️ 75 minutes</span>
+                            <span>📝 65 questions</span>
+                            <span>❌ No negative marking</span>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="startMockTest('foundation')">Start Foundation Test</button>
+                    </div>
+                    <div class="mock-card">
+                        <div class="mock-card-badge advanced">Advanced</div>
+                        <h3>Part B: Advanced Test</h3>
+                        <p>Advanced Quant, Reasoning & Coding — 17 questions in 115 minutes</p>
+                        <div class="mock-details">
+                            <span>🔢 15 Advanced Quant</span>
+                            <span>💻 2 Coding</span>
+                        </div>
+                        <div class="mock-meta">
+                            <span>⏱️ 115 minutes</span>
+                            <span>📝 17 questions</span>
+                            <span>⭐ Digital/Prime</span>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="startMockTest('advanced')">Start Advanced Test</button>
+                    </div>
+                    <div class="mock-card">
+                        <div class="mock-card-badge full">Full ITP</div>
+                        <h3>Complete ITP Mock</h3>
+                        <p>Full integrated test — Both Foundation + Advanced combined</p>
+                        <div class="mock-details">
+                            <span>📝 82 total questions</span>
+                            <span>⏱️ 190 minutes</span>
+                        </div>
+                        <div class="mock-meta">
+                            <span>🎯 Real exam simulation</span>
+                            <span>📊 Detailed analytics</span>
+                        </div>
+                        <button class="btn btn-primary btn-block" onclick="startMockTest('full')">Start Full Mock Test</button>
+                    </div>
+                </div>
+
+                <!-- Previous Mock Results -->
+                <div class="section-header" style="margin-top: 3rem;">
+                    <h2 class="section-title">📊 Mock Test History</h2>
+                </div>
+                <div class="mock-history" id="mockHistory">
+                    <div class="empty-state">
+                        <span class="empty-icon">📋</span>
+                        <p>No mock tests taken yet. Take your first mock test to see results here!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========== 10-DAY PLANNER PAGE ========== -->
+        <div class="page" id="page-planner">
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📅 10-Day Battle Plan</h2>
+                    <p class="section-subtitle">Strategically designed schedule to maximize your score</p>
+                </div>
+                <div class="planner-controls">
+                    <button class="btn btn-sm btn-glass" onclick="resetPlanner()">🔄 Reset Progress</button>
+                    <div class="planner-overall">
+                        <span>Overall: </span>
+                        <span class="planner-percent" id="plannerPercent">0%</span>
+                    </div>
+                </div>
+                <div class="planner-timeline" id="plannerTimeline">
+                    <!-- Filled dynamically -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ========== ERROR NOTEBOOK PAGE ========== -->
+        <div class="page" id="page-notebook">
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📓 Error Notebook</h2>
+                    <p class="section-subtitle">Track mistakes, learn from them, and never repeat. This is your secret weapon!</p>
+                </div>
+                <div class="notebook-controls">
+                    <div class="notebook-filter">
+                        <select id="notebookFilter" onchange="filterNotebook()">
+                            <option value="all">All Topics</option>
+                            <option value="numerical">Numerical</option>
+                            <option value="reasoning">Reasoning</option>
+                            <option value="verbal">Verbal</option>
+                            <option value="coding">Coding</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-sm btn-primary" onclick="addManualNote()">+ Add Note</button>
+                    <button class="btn btn-sm btn-glass" onclick="clearNotebook()">🗑️ Clear All</button>
+                </div>
+                <div class="notebook-entries" id="notebookEntries">
+                    <div class="empty-state">
+                        <span class="empty-icon">📝</span>
+                        <p>No errors recorded yet. When you get a question wrong, it'll automatically appear here!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- ========== FORMULAS PAGE ========== -->
+        <div class="page" id="page-formulas">
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">📐 Quick Formula Reference</h2>
+                    <p class="section-subtitle">All essential formulas and shortcuts at your fingertips</p>
+                </div>
+                <div class="formula-search">
+                    <input type="text" id="formulaSearch" placeholder="🔍 Search formulas..." oninput="searchFormulas()">
+                </div>
+                <div class="formula-categories" id="formulaCategories">
+                    <!-- Filled dynamically -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Add Manual Note Modal -->
+    <div class="modal-overlay" id="noteModal" style="display:none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>📝 Add Error Note</h3>
+                <button class="modal-close" onclick="closeNoteModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Topic</label>
+                    <select id="noteTopicSelect">
+                        <option value="numerical">Numerical Ability</option>
+                        <option value="reasoning">Reasoning</option>
+                        <option value="verbal">Verbal Ability</option>
+                        <option value="coding">Coding</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Question / Concept</label>
+                    <textarea id="noteQuestion" rows="3" placeholder="Write the question or concept you got wrong..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>What I learned / Correct approach</label>
+                    <textarea id="noteLesson" rows="3" placeholder="Write what you learned and the correct approach..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-glass" onclick="closeNoteModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveManualNote()">Save Note</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="questions.js"></script>
+    <script src="formulas.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
